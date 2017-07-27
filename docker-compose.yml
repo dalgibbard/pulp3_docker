@@ -5,10 +5,10 @@ services:
     environment:
       - POSTGRES_PASSWORD="Sup3rSecr3tPassw0rd"
       - PULP_DB="pulp"
-      - PULP_USER="pulp"
-      - PULP_PASS="Ch4ng3_ThIs_P4sSW0rd"
-    volumes:
-      - ./data/postrgres/var/lib/pgsql:/var/lib/pgsql
+      - PULP_DB_USER="pulp"
+      - PULP_DB_PASS="Ch4ng3_ThIs_P4sSW0rd"
+#    volumes:
+#      - ./data/postrgres/var/lib/postgresql:/var/lib/postgresql
   adminer:
     image: adminer
     ports:
@@ -17,14 +17,14 @@ services:
     build: ./qpidd/
   rabbitmq:
     image: rabbitmq:3-management
-    volumes:
-      - ./data/rabbitmq/var/lib/rabbitmq:/var/lib/rabbitmq
+#    volumes:
+#      - ./data/rabbitmq/var/lib/rabbitmq:/var/lib/rabbitmq
     ports:
       - "8081:15672" #Management WebUI on remote 8081 for RabbitMQ: guest/guest
   pulp3:
     build: ./pulp3/
     volumes:
-      - ./data/pulp/etc/pki/pulp:/etc/pki/pulp
+#      - ./data/pulp/etc/pki/pulp:/etc/pki/pulp
       - ./data/pulp/var/lib/pulp:/var/lib/pulp
       - ./data/pulp/var/cache/pulp:/var/cache/pulp
     ports:
@@ -32,8 +32,8 @@ services:
       - "443:443"
       - "5000:5000"
     environment:
-      - DB_USER="pulp"
-      - DB_PASS="Ch4ng3_ThIs_P4sSW0rd"
-      - DB_NAME="pulp"
-      - DB_HOST="db" # Name reference resolved by docker
-      - DB_PORT="5432"
+      - PULP_DB_USER="pulp"
+      - PULP_DB_PASS="Ch4ng3_ThIs_P4sSW0rd"
+      - PULP_DB_NAME="pulp"
+      - PULP_DB_HOST="db" # Name reference resolved by docker
+      - PULP_DB_PORT="5432"

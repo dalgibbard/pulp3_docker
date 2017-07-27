@@ -3,11 +3,11 @@
 #Configure
 cp ./pulp/lib/python3.*/site-packages/pulpcore/etc/pulp/server.yaml /etc/pulp/server.yaml
 #Vars
-CONF_DB_USER=${DB_USER:-pulp}
-CONF_DB_PASS=${DB_PASS:-Ch4ng3_ThIs_P4sSW0rd}
-CONF_DB_NAME=${DB_NAME:-pulp}
-CONF_DB_HOST=${DB_HOST:-db}
-CONF_DB_PORT=${DB_PORT:-5432}
+CONF_DB_USER=${PULP_DB_USER:-pulp}
+CONF_DB_PASS=${PULP_DB_PASS:-Ch4ng3_ThIs_P4sSW0rd}
+CONF_DB_NAME=${PULP_DB_NAME:-pulp}
+CONF_DB_HOST=${PULP_DB_HOST:-db}
+CONF_DB_PORT=${PULP_DB_PORT:-5432}
 
 cat << EOF >> /etc/pulp/server.yaml
 
