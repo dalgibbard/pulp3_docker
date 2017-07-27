@@ -3,24 +3,24 @@ services:
   db:
     image: postgres:9.6.3
     environment:
-      POSTGRES_USER="pulp"
-      POSTGRES_PASSWORD="Ch4ng3_Th!s_P4s$W0rd!"
-      PGDATA="/var/lib/pgsql/data/base"
-      POSTGRES_DB="pulp"
+      - POSTGRES_USER="pulp"
+      - POSTGRES_PASSWORD="Ch4ng3_Th!s_P4s$W0rd!"
+      - PGDATA="/var/lib/pgsql/data/base"
+      - POSTGRES_DB="pulp"
     volumes:
       - ./data/postrgres:/var/lib/pgsql/data/base
   adminer:
     image: adminer
     ports:
-      - 8080:8080
+      - "8080:8080"
   qpid:
-    build: qpidd/Dockerfile
+    image: qpidd/Dockerfile
   rabbitmq:
     image: rabbitmq:3-management
     volumes:
       - ./data/rabbitmq:/var/lib/rabbitmq
     ports:
-      - 8081:15672 #Management WebUI on remote 8081 for RabbitMQ: guest/guest
+      - "8081:15672" #Management WebUI on remote 8081 for RabbitMQ: guest/guest
   pulp3:
     build: pulp3/Dockerfile
     volumes:
@@ -28,6 +28,6 @@ services:
       - ./data/pulp/etc/pki/pulp:/etc/pki/pulp
       - ./data/pulp/var/lib/pulp:/var/lib/pulp
     ports:
-      - 80:80
-      - 443:443
-      - 5000:5000
+      - "80:80"
+      - "443:443"
+      - "5000:5000"
