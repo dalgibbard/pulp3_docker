@@ -1,5 +1,5 @@
 # pulp3_docker
-Attempting to spawn Pulp3 (alpha) within Docker
+Attempting to spawn Pulp3 (non-stable dev branch) within Docker
 
 ## To Use:
 * Make sure you have Docker installed
@@ -13,3 +13,8 @@ pip install docker-compose
 cd pulp3_docker
 docker-compose up
 ```
+
+## Notes:
+* THIS IS ONLY FOR LOCAL TESTING
+* There are passwords defined in docker-compose.yml which can/should be overwritten.
+* This may stop working if the current pulp3 branch has issues (and as an dev release, is subject to potential problems)
